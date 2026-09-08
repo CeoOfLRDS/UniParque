@@ -1,165 +1,114 @@
 //Nota: ni voy a fingir que formateé esto yo mismo, ambos sabemos que no.
 
-Análisis
+# Análisis
 
-1. ¿Qué propiedades y métodos tendrá cada clase?
+## 1. ¿Qué propiedades y métodos tendrá cada clase?
 
-Clase PuntoAcceso
+### Clase `PuntoAcceso`
 
 Representa uno de los puntos de acceso habilitados dentro del parque.
 
-Propiedades
+#### Propiedades
 
-codigo: identifica el punto de acceso.
+* **`codigo`**: identifica el punto de acceso.
+* **`nombre`**: almacena su nombre.
+* **`ubicacion`**: indica dónde se encuentra.
+* **`capacidadMaximaPorHora`**: indica cuántas personas puede atender por hora.
+* **`estado`**: indica su condición actual.
 
-nombre: almacena su nombre.
+#### Métodos
 
-ubicacion: indica dónde se encuentra.
+* **Constructor**: crea el punto de acceso y valida la capacidad.
+* **`getCapacidadMaximaPorHora()`**: devuelve su capacidad.
+* **`modificarDatos()`**: modifica la capacidad y el estado.
+* **`toString()`**: devuelve toda su información.
 
-capacidadMaximaPorHora: indica cuántas personas puede atender por hora.
+---
 
-estado: indica su condición actual.
+### Clase `Visitante`
 
-Métodos
+Representa a una persona registrada durante su estadía en el Parque Universitario de Atracciones.
 
-Constructor: crea el punto de acceso y valida la capacidad.
+#### Propiedades
 
-getCapacidadMaximaPorHora(): devuelve su capacidad.
+* **`codigoEntrada`**: identifica de forma única al visitante.
+* **`nombre`**: almacena su nombre.
+* **`edad`**: almacena su edad.
+* **`cantidadAtraccionesVisitadas`**: lleva el conteo de atracciones visitadas.
+* **`puntosAcumulados`**: almacena sus puntos.
 
-modificarDatos(): modifica la capacidad y el estado.
+#### Métodos
 
-toString(): devuelve toda su información.
+* **Constructor**: crea al visitante y valida sus datos.
+* **`getCodigoEntrada()`**: permite buscar al visitante.
+* **`getEdad()`**: se utiliza para calcular el promedio de edad.
+* **`getCantidadAtraccionesVisitadas()`**: se utiliza para encontrar al visitante con más atracciones.
+* **`getPuntosAcumulados()`**: se utiliza para encontrar al visitante con más puntos.
+* **`modificarDatos()`**: modifica su información.
+* **`toString()`**: devuelve toda su información.
 
-Clase Visitante
+---
 
-Representa a una persona registrada durante la estadía al Parque Universitario de atracciones.
-
-Propiedades
-
-codigoEntrada: identifica de forma única al visitante.
-
-nombre: almacena su nombre.
-
-edad: almacena su edad.
-
-cantidadAtraccionesVisitadas: lleva el conteo de atracciones.
-
-puntosAcumulados: almacena sus puntos.
-
-Métodos
-
-Constructor: crea al visitante y valida sus datos.
-
-getCodigoEntrada(): permite buscar al visitante.
-
-getEdad(): se utiliza para calcular el promedio de edad.
-
-getCantidadAtraccionesVisitadas(): se utiliza para encontrar al visitante con más atracciones.
-
-getPuntosAcumulados(): se utiliza para encontrar al visitante con más puntos.
-
-modificarDatos(): modifica su información.
-
-toString(): devuelve toda su información.
-
-Clase Parque
+### Clase `Parque`
 
 Representa el parque y administra sus puntos de acceso y visitantes.
 
-Propiedades
+#### Propiedades
 
-nombre: nombre del parque.
+* **`nombre`**: nombre del parque.
+* **`codigoIdentificacion`**: código que identifica al parque.
+* **`nombreEncargado`**: nombre de la persona encargada.
+* **`puntosAcceso`**: arreglo básico de cinco objetos `PuntoAcceso`.
+* **`visitantes`**: colección dinámica de objetos `Visitante`.
 
-codigoIdentificacion: código que identifica al parque.
+#### Métodos
 
-nombreEncargado: nombre de la persona encargada.
+* **Constructor**: crea el parque e inicializa el arreglo y el `ArrayList`.
+* **`habilitarPuntoAcceso()`**: coloca un punto de acceso en una posición disponible.
+* **`consultarPuntosAcceso()`**: devuelve los puntos de acceso habilitados.
+* **`consultarPuntoAcceso()`**: busca un punto mediante su posición.
+* **`modificarPuntoAcceso()`**: modifica la capacidad y el estado de un punto.
+* **`cerrarPuntoAcceso()`**: coloca `null` en una posición.
+* **`registrarVisitante()`**: agrega un visitante si su código no está repetido.
+* **`consultarVisitantes()`**: devuelve todos los visitantes registrados.
+* **`buscarVisitante()`**: busca un visitante por su código.
+* **`modificarVisitante()`**: modifica un visitante encontrado mediante su código.
+* **`eliminarVisitante()`**: elimina un visitante del `ArrayList` mediante su código.
+* **`generarReporte()`**: realiza todos los cálculos solicitados y muestra un ranking.
 
-puntosAcceso: arreglo básico de cinco objetos PuntoAcceso.
+---
 
-visitantes: colección dinámica de objetos Visitante.
+### Clase `Main`
 
-Métodos
+Se encargará de inicializar y administrar el parque mediante la interacción con el usuario.
 
-Constructor: crea el parque e inicializa el arreglo y el ArrayList.
+#### Propiedades
 
-habilitarPuntoAcceso(): coloca un punto de acceso en una posición disponible.
+* **`parqueActual`**: guarda el parque que está siendo administrado.
 
-consultarPuntosAcceso(): devuelve los puntos habilitados.
+#### Métodos
 
-consultarPuntoAcceso(): busca un punto mediante su posición.
+* **`ejecutarOpcion()`**: ejecuta la opción seleccionada por el usuario.
 
-modificarPuntoAcceso(): modifica la capacidad y estado de un punto.
+---
 
-cerrarPuntoAcceso(): coloca null en una posición.
+## 2. ¿Qué tipo deben tener las propiedades y métodos de cada clase?
 
-registrarVisitante(): agrega un visitante si su código no está repetido.
+### `PuntoAcceso`
 
-consultarVisitantes(): devuelve todos los visitantes registrados.
+#### Atributos
 
-buscarVisitante(): busca un visitante por su código creado.
+| Visibilidad | Atributo                 | Tipo     |
+| ----------- | ------------------------ | -------- |
+| `private`   | `codigo`                 | `String` |
+| `private`   | `nombre`                 | `String` |
+| `private`   | `ubicacion`              | `String` |
+| `private`   | `capacidadMaximaPorHora` | `int`    |
+| `private`   | `estado`                 | `String` |
 
-modificarVisitante(): modifica un visitante encontrado cuando haya creado su código.
+#### Métodos
 
-eliminarVisitante(): elimina un visitante del ArrayList solo si ya creo su código.
-
-generarReporte(): realiza todos los cálculos solicitados, mostrando un ranking.
-
-Clase Main
-
-Se encargará de inicializar el Parque.
-
-Propiedades
-
-parqueActual: guarda el parque que está siendo administrado.
-
-Métodos
-
-ejecutarOpcion(): ejecuta la opción seleccionada.
-
-2. ¿Qué tipo deben tener las propiedades y métodos de cada clase?
-
-PuntoAcceso
-
-Atributos
-
-Visibilidad
-
-Atributo
-
-Tipo
-
-private
-
-codigo
-
-String
-
-private
-
-nombre
-
-String
-
-private
-
-ubicacion
-
-String
-
-private
-
-capacidadMaximaPorHora
-
-int
-
-private
-
-estado
-
-String
-
-Métodos
-
+```text
 + PuntoAcceso(codigo: String, nombre: String, ubicacion: String,
               capacidad: int, estado: String)
 
@@ -168,49 +117,25 @@ Métodos
 + modificarDatos(capacidad: int, estado: String): void
 
 + toString(): String
+```
 
-Visitante
+---
 
-Atributos
+### `Visitante`
 
-Visibilidad
+#### Atributos
 
-Atributo
+| Visibilidad | Atributo                       | Tipo     |
+| ----------- | ------------------------------ | -------- |
+| `private`   | `codigoEntrada`                | `String` |
+| `private`   | `nombre`                       | `String` |
+| `private`   | `edad`                         | `int`    |
+| `private`   | `cantidadAtraccionesVisitadas` | `int`    |
+| `private`   | `puntosAcumulados`             | `int`    |
 
-Tipo
+#### Métodos
 
-private
-
-codigoEntrada
-
-String
-
-private
-
-nombre
-
-String
-
-private
-
-edad
-
-int
-
-private
-
-cantidadAtraccionesVisitadas
-
-int
-
-private
-
-puntosAcumulados
-
-int
-
-Métodos
-
+```text
 + Visitante(codigo: String, nombre: String, edad: int,
             atracciones: int, puntos: int)
 
@@ -226,49 +151,25 @@ Métodos
                  atracciones: int, puntos: int): void
 
 + toString(): String
+```
 
-Parque
+---
 
-Atributos
+### `Parque`
 
-Visibilidad
+#### Atributos
 
-Atributo
+| Visibilidad | Atributo               | Tipo                   |
+| ----------- | ---------------------- | ---------------------- |
+| `private`   | `nombre`               | `String`               |
+| `private`   | `codigoIdentificacion` | `String`               |
+| `private`   | `nombreEncargado`      | `String`               |
+| `private`   | `puntosAcceso`         | `PuntoAcceso[]`        |
+| `private`   | `visitantes`           | `ArrayList<Visitante>` |
 
-Tipo
+#### Métodos
 
-private
-
-nombre
-
-String
-
-private
-
-codigoIdentificacion
-
-String
-
-private
-
-nombreEncargado
-
-String
-
-private
-
-puntosAcceso
-
-PuntoAcceso[]
-
-private
-
-visitantes
-
-ArrayList<Visitante>
-
-Métodos
-
+```text
 + Parque(nombre: String, codigo: String, encargado: String)
 
 + habilitarPuntoAcceso(posicion: int, punto: PuntoAcceso): boolean
@@ -294,145 +195,239 @@ Métodos
 + eliminarVisitante(codigo: String): boolean
 
 + generarReporte(): String
+```
 
-Main
+---
 
-Atributos
+### `Main`
 
-Visibilidad
+#### Atributos
 
-Atributo
+| Visibilidad | Atributo       | Tipo     |
+| ----------- | -------------- | -------- |
+| `private`   | `parqueActual` | `Parque` |
 
-Tipo
+#### Métodos
 
-private
-
-parqueActual
-
-Parque
-
-Métodos
-
+```text
 - ejecutarOpcion(opcion: int): void
+```
 
-3. ¿Cuál de las propiedades identificadas debe implementarse utilizando un arreglo básico?
+---
 
-Se implementarán arreglos básicos en:
+## 3. ¿Cuál de las propiedades identificadas debe implementarse utilizando un arreglo básico?
 
+Se implementará un arreglo básico para almacenar los puntos de acceso:
+
+```java
 private PuntoAcceso[] puntosAcceso;
+```
 
-¿Qué tipo de objetos almacenará y cuál será su tamaño?
+### ¿Qué tipo de objetos almacenará y cuál será su tamaño?
 
-El arreglo almacenará objetos de tipo PuntoAcceso y tendrá un tamaño fijo de cinco posiciones:
+El arreglo almacenará objetos de tipo `PuntoAcceso` y tendrá un tamaño fijo de cinco posiciones:
 
+```java
 puntosAcceso = new PuntoAcceso[5];
+```
 
-4. ¿Cuál de las propiedades identificadas debe implementarse utilizando un ArrayList? ¿Qué tipo de objetos almacenará?
+Cada posición podrá contener un objeto `PuntoAcceso` o `null` si el punto de acceso se encuentra cerrado o la posición está disponible.
+
+---
+
+## 4. ¿Cuál de las propiedades identificadas debe implementarse utilizando un `ArrayList`? ¿Qué tipo de objetos almacenará?
 
 La propiedad será:
 
+```java
 private ArrayList<Visitante> visitantes;
+```
 
-Almacenará objetos de tipo Visitante y se inicializará así:
+Almacenará objetos de tipo `Visitante` y se inicializará de la siguiente manera:
 
+```java
 visitantes = new ArrayList<Visitante>();
+```
 
-5. ¿Cuáles deben ser los modificadores de visibilidad de los miembros en cada clase?
+A diferencia del arreglo de puntos de acceso, el `ArrayList` permitirá agregar y eliminar visitantes dinámicamente.
 
-Los modificadores de visibilidad en los miembros son:
+---
 
+## 5. ¿Cuáles deben ser los modificadores de visibilidad de los miembros en cada clase?
+
+Los atributos de las clases deberán tener visibilidad `private` para aplicar encapsulamiento.
+
+Por ejemplo:
+
+```java
 private String nombre;
+```
 
-Mientras que los constructores y métodos usados en otras clases van a ser públicas:
+Los constructores y métodos que sean utilizados desde otras clases deberán ser `public`.
 
-public Parque
-public boolean registrarVisitante
+Por ejemplo:
 
-Los métodos auxiliares que solamente se utilicen dentro de una clase serán privados.
+```java
+public Parque(...)
+public boolean registrarVisitante(...)
+```
 
+Los métodos auxiliares que solamente sean utilizados internamente dentro de una clase podrán ser `private`.
+
+Por ejemplo:
+
+```java
 private void mostrarMenu()
+```
 
-Los métodos del main() serán públicos y estáticos.
+En la clase `Main`, el método `main()` será `public` y `static`:
 
-6. ¿Qué parámetros serán requeridos por los métodos en sus clases?
+```java
+public static void main(String[] args)
+```
 
-El constructor de PuntoAcceso recibe código, nombre, ubicación, capacidad y estado.
+---
 
-modificarDatos() de PuntoAcceso recibe la nueva capacidad y el nuevo estado.
+## 6. ¿Qué parámetros serán requeridos por los métodos en sus clases?
 
-El constructor de Visitante recibe código, nombre, edad, atracciones y puntos.
+Los parámetros requeridos por cada método serán los siguientes:
 
-modificarDatos() de Visitante recibe nombre, edad, atracciones y puntos.
+* El constructor de `PuntoAcceso` recibe:
 
-habilitarPuntoAcceso() recibe una posición y un objeto PuntoAcceso.
+  * código
+  * nombre
+  * ubicación
+  * capacidad
+  * estado
 
-consultarPuntoAcceso() recibe la posición que se desea consultar.
+* `modificarDatos()` de `PuntoAcceso` recibe:
 
-modificarPuntoAcceso() recibe posición, nueva capacidad y nuevo estado.
+  * nueva capacidad
+  * nuevo estado
 
-cerrarPuntoAcceso() recibe la posición que se cerrará.
+* El constructor de `Visitante` recibe:
 
-registrarVisitante() recibe un objeto Visitante.
+  * código
+  * nombre
+  * edad
+  * cantidad de atracciones
+  * puntos acumulados
 
-buscarVisitante() y eliminarVisitante() reciben un código de entrada.
+* `modificarDatos()` de `Visitante` recibe:
 
-modificarVisitante() recibe el código que se buscará y los nuevos datos.
+  * nombre
+  * edad
+  * cantidad de atracciones
+  * puntos acumulados
 
-ejecutarOpcion() recibe la opción seleccionada por el usuario.
+* `habilitarPuntoAcceso()` recibe:
 
-7. ¿Cómo proveerá de valores iniciales a sus objetos?
+  * posición
+  * objeto `PuntoAcceso`
 
-Los valores iniciales serán proporcionados mediante constructores.
+* `consultarPuntoAcceso()` recibe:
 
+  * posición que se desea consultar
+
+* `modificarPuntoAcceso()` recibe:
+
+  * posición
+  * nueva capacidad
+  * nuevo estado
+
+* `cerrarPuntoAcceso()` recibe:
+
+  * posición que se desea cerrar
+
+* `registrarVisitante()` recibe:
+
+  * objeto `Visitante`
+
+* `buscarVisitante()` recibe:
+
+  * código de entrada
+
+* `modificarVisitante()` recibe:
+
+  * código del visitante
+  * nuevos datos del visitante
+
+* `eliminarVisitante()` recibe:
+
+  * código de entrada
+
+* `ejecutarOpcion()` recibe:
+
+  * opción seleccionada por el usuario
+
+---
+
+## 7. ¿Cómo proveerá de valores iniciales a sus objetos?
+
+Los valores iniciales serán proporcionados mediante los constructores de cada clase.
+
+En el caso de `Parque`, el arreglo de puntos de acceso se inicializará con cinco posiciones:
+
+```java
 this.puntosAcceso = new PuntoAcceso[5];
+```
 
-Al crear un parque se inicializarán las estructuras:
+Inicialmente, todas las posiciones del arreglo contendrán `null`.
 
+La colección de visitantes se inicializará de la siguiente manera:
+
+```java
 this.visitantes = new ArrayList<Visitante>();
+```
 
-¿Qué valores deberán validarse antes de modificar el estado de los objetos?
+### ¿Qué valores deberán validarse antes de modificar el estado de los objetos?
 
-Los textos obligatorios no pueden estar vacíos.
+Se deberán validar las siguientes condiciones:
 
-La capacidad máxima debe ser mayor que cero.
+* Los textos obligatorios no pueden estar vacíos.
+* La capacidad máxima debe ser mayor que cero.
+* La edad debe ser mayor que cero.
+* La cantidad de atracciones visitadas no puede ser negativa.
+* Los puntos acumulados no pueden ser negativos.
+* La posición del arreglo debe encontrarse entre `0` y `4`.
+* La posición debe contener `null` antes de habilitar un punto de acceso.
+* La posición no debe contener `null` antes de consultar, modificar o cerrar un punto de acceso.
+* No se permitirán visitantes con códigos repetidos.
+* Los nuevos valores también deberán validarse antes de modificar los objetos.
 
-La edad debe ser mayor que cero.
+---
 
-Las atracciones visitadas no pueden ser negativas.
+## 8. ¿Cómo determinará si una posición del arreglo contiene un punto de acceso o contiene `null`?
 
-Los puntos acumulados no pueden ser negativos.
+Primero se validarán los límites del arreglo:
 
-La posición del arreglo debe encontrarse entre 0 y 4.
-
-La posición debe contener null antes de habilitar un punto.
-
-La posición no debe contener null antes de consultar, modificar o cerrar.
-
-No se permitirán visitantes con códigos repetidos.
-
-Los nuevos valores también serán validados antes de modificar los objetos.
-
-8. ¿Cómo determinará si una posición del arreglo contiene un punto de acceso o contiene null?
-
-Se validarán los límites.
-
+```java
 if (posicion >= 0 && posicion < puntosAcceso.length) {
     // La posición es válida
 }
+```
 
-Después se comprobará su contenido:
+Después se comprobará el contenido de la posición:
 
+```java
 if (puntosAcceso[posicion] == null) {
     System.out.println("La posición está disponible.");
-}
-else {
+} else {
     System.out.println("La posición contiene un punto de acceso.");
 }
+```
 
-9. ¿Cómo realizará las operaciones de búsqueda, modificación y eliminación dentro del ArrayList?
+De esta manera se evita acceder a posiciones inexistentes y se puede determinar si una posición está disponible o contiene un objeto `PuntoAcceso`.
 
-Primero, se debe recorrer el ArrayList:
+---
 
+## 9. ¿Cómo realizará las operaciones de búsqueda, modificación y eliminación dentro del `ArrayList`?
+
+Las operaciones sobre el `ArrayList` se realizarán recorriendo la colección y comparando el código de entrada de cada visitante.
+
+Por ejemplo:
+
+```java
 for (int i = 0; i < visitantes.size(); i++) {
     Visitante visitante = visitantes.get(i);
 
@@ -440,57 +435,131 @@ for (int i = 0; i < visitantes.size(); i++) {
         // Visitante encontrado
     }
 }
+```
 
-Registrar
+### Registrar
 
-Para registrar, se debe buscar el código del visitante. En caso de que no exista, se debe crear uno:
+Para registrar un visitante, primero se deberá comprobar que su código no exista.
 
+Si el código no está registrado, se agregará el nuevo visitante:
+
+```java
 visitantes.add(nuevoVisitante);
+```
 
-Modificar
+Si el código ya existe, el registro deberá rechazarse.
 
-Para modificar, se buscará al visitante y se llamará:
+### Modificar
 
+Para modificar un visitante, primero se buscará mediante su código.
+
+Una vez encontrado, se llamará al método:
+
+```java
 visitante.modificarDatos(nombre, edad, atracciones, puntos);
+```
 
-Eliminar
+### Eliminar
 
-Para eliminar se usará remove:
+Para eliminar un visitante, primero se buscará su índice dentro del `ArrayList`.
 
+Una vez encontrado, se utilizará:
+
+```java
 visitantes.remove(indice);
+```
 
-10. ¿Qué situaciones del programa pueden producir excepciones? Identifique qué excepciones deberán manejarse y en qué partes del programa utilizará try-catch y finally.
+---
 
-Ingreso de datos numéricos incorrectos
+## 10. ¿Qué situaciones del programa pueden producir excepciones? Identifique qué excepciones deberán manejarse y en qué partes del programa utilizará `try-catch` y `finally`.
 
-Si el usuario escribe letras o símbolos cuando se solicita un número, se producirá una InputMismatchException.
+### Ingreso de datos numéricos incorrectos
 
-Esta excepción se manejará en la clase Main mediante un bloque try-catch. Después del error, se descartará la entrada inválida para permitir que el usuario intente nuevamente.
+Si el usuario escribe letras o símbolos cuando se solicita un número mediante `Scanner`, se puede producir una `InputMismatchException`.
 
-Valores que incumplen las validaciones
+Esta excepción se manejará en la clase `Main` mediante un bloque `try-catch`.
 
-Se generará una Argumento Inválido cuando la capacidad de un punto de acceso sea menor o igual que cero, la edad de un visitante no sea positiva, o las cantidades de atracciones y puntos sean negativas.
+Después del error, se deberá descartar la entrada inválida para permitir que el usuario intente nuevamente.
 
-Posiciones inválidas en el arreglo
+### Valores que incumplen las validaciones
 
-Acceder a un índice menor que cero o mayor que cuatro podría generar una ArrayIndexOutOfBoundsException.
+Si se intenta crear o modificar un objeto con valores inválidos, se puede lanzar una `IllegalArgumentException`.
 
-Para prevenirla, se comprobarán los límites del arreglo antes de consultar, modificar o cerrar un punto de acceso.
+Por ejemplo:
 
-Posiciones que contienen null
+* Capacidad de un punto de acceso menor o igual que cero.
+* Edad de un visitante menor o igual que cero.
+* Cantidad de atracciones negativa.
+* Cantidad de puntos negativa.
+* Textos obligatorios vacíos.
 
-Utilizar los métodos de una posición vacía podría causar una excepción de valor null.
+### Posiciones inválidas en el arreglo
 
-Antes de usar un punto de acceso, se verificará que la posición contenga un objeto diferente de null.
+Acceder a un índice menor que cero o mayor que el último índice disponible puede producir una `ArrayIndexOutOfBoundsException`.
 
-Operaciones sobre un ArrayList vacío
+Para evitar esta situación, se comprobarán los límites antes de acceder al arreglo:
 
-Antes de buscar valores máximos o calcular el promedio de edad, se comprobará que existan visitantes registrados.
+```java
+if (posicion >= 0 && posicion < puntosAcceso.length) {
+    // Acceso seguro al arreglo
+}
+```
 
-De esta manera se evitan operaciones que necesiten elementos inexistentes.
+### Posiciones que contienen `null`
 
-Uso de try-catch y finally
+Si una posición del arreglo contiene `null` y se intenta utilizar directamente un método sobre ella, podría producirse una `NullPointerException`.
 
-Los bloques try-catch se colocarán en la clase Main, especialmente en las secciones encargadas de leer datos, crear objetos y modificar su información.
+Por ejemplo, sería incorrecto realizar:
 
-El bloque finally se utilizará al terminar la ejecución para cerrar el objeto Scanner y mostrar un mensaje final, independientemente de si el programa terminó normalmente o se produjo una excepción controlada.
+```java
+puntosAcceso[posicion].toString();
+```
+
+sin comprobar previamente que la posición contenga un objeto.
+
+Por esta razón, se verificará:
+
+```java
+if (puntosAcceso[posicion] != null) {
+    // Se puede utilizar el objeto
+}
+```
+
+### Operaciones sobre un `ArrayList` vacío
+
+Antes de realizar operaciones como calcular el promedio de edad o determinar cuál visitante tiene más puntos o más atracciones, se comprobará que existan visitantes registrados.
+
+Por ejemplo:
+
+```java
+if (visitantes.isEmpty()) {
+    System.out.println("No hay visitantes registrados.");
+}
+```
+
+De esta manera se evita realizar cálculos que requieran elementos inexistentes.
+
+### Uso de `try-catch` y `finally`
+
+Los bloques `try-catch` se colocarán principalmente en la clase `Main`, especialmente en las secciones encargadas de:
+
+* Leer datos ingresados por el usuario.
+* Crear objetos.
+* Modificar información.
+* Ejecutar las diferentes opciones del menú.
+
+El bloque `finally` podrá utilizarse para cerrar el objeto `Scanner` y mostrar un mensaje final, independientemente de si el programa terminó normalmente o se produjo una excepción controlada.
+
+Por ejemplo:
+
+```java
+Scanner scanner = new Scanner(System.in);
+
+try {
+    // Ejecución del programa
+} catch (InputMismatchException e) {
+    System.out.println("Debe ingresar un valor válido.");
+} finally {
+    scanner.close();
+}
+```
